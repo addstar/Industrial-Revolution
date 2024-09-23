@@ -48,7 +48,8 @@ class LazuliFluxContainerBlockEntity(tier: Tier, pos: BlockPos, state: BlockStat
     private fun update() {
         val width = floor((((energy.toFloat() / energyCapacity.toFloat()) * 0.5f) + 0.25f) * 16)
         if (width != clientLastRenderWidth) {
-            sync()
+            // Don't call sync here on client because this crashes the client when used with AAMod Ralph generator
+            //sync()
             clientLastRenderWidth = width
         }
     }
